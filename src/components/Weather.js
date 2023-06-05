@@ -1,4 +1,5 @@
 import React, { useState, setEffect, useEffect } from "react";
+import '../css/Weather.css';
 
 export default function Weather() {
     const [weather, setWeather] = useState("");
@@ -28,12 +29,23 @@ export default function Weather() {
     }, []);
 
     return (
-        <div>
+        <div className="weather__container">
             <div>{city}</div>
-            <div>{weather}</div>
-            <div>{Math.floor(temp)} °C</div>
-            <div>{humidity} %</div>
-            <div>{wind} meter/sec</div>
+            <div className="weather__current-weather">
+                {weather === "Clear" ? <i className="fa-solid fa-sun" style={{color: '#ffe569'}}></i> : 
+                 weather.toLowerCase().includes("clouds") ? <i className="fa-solid fa-cloud" style={{color: '#c0cbd3'}}></i> :
+                 weather.toLowerCase().includes("rain") ? <i className="fa-solid fa-cloud-rain" style={{color: '#6d9cba'}}></i> :
+                 weather === "Snow" ? <i className="fa-solid fa-snowflake" style={{color: '#9edaff'}}></i> :
+                 weather.toLowerCase().includes("thunderstorm") ? <i class="fa-solid fa-cloud-bolt" style={{color: '#576885'}}></i> :
+                 <i class="fa-solid fa-bars-staggered" style={{color: '#a8bce1'}}></i>
+                }
+                {weather}
+            </div>
+            <div className="weather__details">
+                <div>{<i className="fa-solid fa-temperature-three-quarters"></i>} {Math.floor(temp)} °C</div>
+                <div><i className="fa-solid fa-droplet"></i> {humidity} %</div>
+                <div><i className="fa-solid fa-wind"></i> {wind} meter/sec</div>
+            </div>
         </div>
     )
 }

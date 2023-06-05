@@ -1,22 +1,56 @@
+.item__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.checkbox {
+    margin-right: 15px;
+}
+
 .checkbox-unclicked {
     width: 20px;
     height: 20px;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid rgb(101, 101, 101);
 }
 
 .checkbox-clicked {
     width: 20px;
     height: 20px;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid rgb(101, 101, 101);
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
+    background-color: #F0DBDB;
+}
+
+.item__text {
+    width: 65%;
 }
 
 .text-checked {
     text-decoration: line-through;
     color: gray;
+}
+
+.item__btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+}
+
+.item__edit-input {
+    border: none;
+    background-color: transparent;
+    width: 64%;
+    outline: none;
+    font-family: Gowun Dodum;
+    font-size: 16px;
+    padding: 0;
+    margin-right: 4px;
 }

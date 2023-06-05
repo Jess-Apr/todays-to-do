@@ -25,24 +25,24 @@ export default function TodoItems({ todo, editContent, handleSubmitContent, hand
     }
 
     return (
-        <li key={todo.id}>
+        <li className="item__container" key={todo.id}>
             <div onClick={() => setIsChecked(!isChecked)}>
-                {isChecked ? <div className="checkbox-clicked"><i className="fa-solid fa-check"></i></div> : <div className="checkbox-unclicked"></div> }
+                {isChecked ? <div className="checkbox checkbox-clicked"><i className="fa-solid fa-check"></i></div> : <div className="checkbox checkbox-unclicked"></div> }
             </div>
             {editClicked ? (
                 <>
-                    <input type="text" onChange={ handleSubmitContent } onKeyDown={ handleSubmitEnter }></input>
+                    <input className="item__edit-input" type="text" onChange={ handleSubmitContent } onKeyDown={ handleSubmitEnter }></input>
                     <div>
-                        <button onClick={ editSubmit }><i className="fa-solid fa-check"></i></button>
-                        <button onClick={ cancelEdit }><i className="fa-solid fa-xmark"></i></button>
+                        <button className="item__btn" onClick={ editSubmit }><i className="fa-solid fa-check fa-lg"></i></button>
+                        <button className="item__btn" onClick={ cancelEdit }><i className="fa-solid fa-xmark fa-lg"></i></button>
                     </div>
                 </>
             ) : (
                 <>
-                    <div className={isChecked ? "text-checked" : "text-unchecked"}>{todo.content}</div>
+                    <div className={isChecked ? "item__text text-checked" : "item__text text-unchecked"}>{todo.content}</div>
                     <div>
-                        <button onClick={ handleEdit }><i className="fa-regular fa-pen-to-square"></i></button>
-                        <button onClick={ handleDelete }><i className="fa-regular fa-trash-can"></i></button>
+                        <button className="item__btn" onClick={ handleEdit }><i className="fa-regular fa-pen-to-square fa-lg"></i></button>
+                        <button className="item__btn" onClick={ handleDelete }><i className="fa-regular fa-trash-can fa-lg"></i></button>
                     </div>
                 </>
             )}

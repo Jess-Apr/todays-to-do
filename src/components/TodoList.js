@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import todoData from "../static/todoData";
 import TodoItems from "./TodoItems.js";
 import shortid from 'shortid';
@@ -8,6 +8,18 @@ export default function TodoList() {
     const [todos, setTodos] = useState(todoData);
     const [content, setContent] = useState("");
     const [editContent, setEditContent] = useState("");
+
+    useEffect(() => {
+        const localTodos = localStorage.getItem('todos');
+        console.log(localTodos, JSON.parse(localTodos));
+        if (localTodos) {
+            setTodos(JSON.parse(localTodos));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }, [todos]);
 
     const handleInputChange = (e) => {
         setContent(e.target.value);
@@ -60,10 +72,11 @@ export default function TodoList() {
     }
 
     return (
-        <div>
-            <div>
-                <input type="text" value={ content } onChange={ handleInputChange } onKeyDown={ handleOnKeyDown }></input>
-                <button><i className="fa-solid fa-check" onClick={ submitContent }></i></button>
+        <div className="todolist__container">
+            <div className="todolist__title">Today's To-Do List</div>
+            <div className="todolist__input-container">
+                <input className="todolist__input" placeholder="오늘의 할 일을 적어주세요." type="text" value={ content } onChange={ handleInputChange } onKeyDown={ handleOnKeyDown }></input>
+                <button className="todolist__submit-btn"><i className="fa-solid fa-check" onClick={ submitContent }></i></button>
             </div>
             <ul>
                 {todos.map((todo) => {

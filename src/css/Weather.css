@@ -1,0 +1,24 @@
+.weather__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.weather__current-weather {
+    font-size: 30px;
+    margin: 5px 0;
+}
+
+.weather__current-weather > i {
+    margin-right: 10px;
+}
+
+.weather__details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
